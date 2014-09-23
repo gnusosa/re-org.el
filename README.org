@@ -33,13 +33,13 @@ re-org-quick-jekyll-post   M-x ... RET
 M-x re-org
 #+end_example
 
-[[img-placeholder]]
+[[https://cloud.githubusercontent.com/assets/634696/4376515/3ecb0950-4346-11e4-89d0-5d8b238d2f09.gif]]
 
 #+begin_example
 M-x re-org-new
 #+end_example
 
-[[img-placeholder]]
+[[https://cloud.githubusercontent.com/assets/634696/4376517/419d6f24-4346-11e4-9029-a54b17877a00.gif]]
 
 ** User custom configuration
 
