@@ -4,7 +4,7 @@
 
 ;; Author: Carlos Ivan Sosa <gnusosa AT gnusosa.net>
 ;; Maintainer: Carlos Ivan Sosa <gnusosa AT gnusosa.net>
-;; Version: 0.1
+;; Version: 0.2
 ;; Keywords: org-mode re-org jekyll
 ;; URL: https://github.com/gnusosa/re-org.el
 
@@ -56,7 +56,7 @@
 ;;       (cons (concat (getenv "HOME") "/.rbenv/shims")
 ;;             (cons (concat (getenv "HOME") "/.rbenv/bin") exec-path)))
 
-(defconst re-org-version "0.1"
+(defconst re-org-version "0.2"
   "Current version of re-org.el")
 
 (defgroup re-org nil
@@ -74,11 +74,33 @@
   :group 're-org)
 
 ;; List of options to select when re-org is called
-(defvar re-org--functions-list '(("Create a new template" . re-org-template)
+(defvar re-org--functions-list '(("Create a new template" . re-org-new-template)
                                  ("Create a new org-file" . re-org-new)
                                  ("Quick Jekyll post" . re-org-quick-jekyll-post)
                                  ("Quick org-file" . re-org-quick))
   "alist of functions for re-org command to use when called")
+
+(defvar re-org-mode-keymap
+  (let ((re-org-mode-map (make-sparse-keymap)))
+    (define-key re-org-mode-map (kbd "C-c m") 're-org)
+    (define-key re-org-mode-map (kbd "C-c n") 're-org-new)
+    (define-key re-org-mode-map (kbd "C-c t") 're-org-new-template)
+    (define-key re-org-mode-map (kbd "C-c q") 're-org-quick)
+    (define-key re-org-mode-map (kbd "C-c j") 're-org-quick-jekyll-post)
+    re-org-mode-map))
+
+;;;###autoload
+(define-minor-mode re-org-mode
+  "Toggle re-org mode.
+With no argument, the mode is toggled on/off.
+Non-nil argument turns mode on.
+Nil argument turns mode off.
+Commands:
+\\{re-org-mode-keymap}"
+  :init-value nil
+  :lighter " re-org"
+  :group 're-org
+  :keymap re-org-mode-keymap)
 
 ;;;###autoload
 (defun re-org ()
